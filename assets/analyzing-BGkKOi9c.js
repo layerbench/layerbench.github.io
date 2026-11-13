@@ -1,0 +1,534 @@
+var e=`# Analyzing a layout
+
+**Analyze** types a sample of text on the layout, key by key, and shows what that took: a heat map
+of the keys, the numbers under it, and how any word you give it is typed.
+
+Each group of the page, **Board**, **A word, typed**, **Summary**, **Legend**, **Editor** and
+**Numbers**, folds away under its heading, and so do **Layouts** and **Metric comparison** in
+**Compare**. This browser remembers which you folded.
+
+Two numbers lead: **Effort**, how hard the keys are to reach, and **SFB**, how often one finger
+presses two keys in a row. Lower is better for both. Both, and some other numbers, also carry a
+badge that places them among other layouts: green is good, red is poor.
+
+## Effort and SFB
+
+These are the two numbers every layout is shown and ranked by.
+
+**Effort** is [cyanophage's](https://cyanophage.github.io/playground.html) measure. Each key
+position has a cost, from 0 under the index, middle and ring fingers on the home row to 8 in the
+inner bottom corners. Effort is the average cost of a keystroke, multiplied by 577 as cyanophage's
+playground does. Under the cyanophage-like rules, ten layouts whose thumb types nothing but space
+read here what his playground prints, to his two decimals, when both are given the text as
+LayerBench types it ([the cyanophage check](../research/cyanophage-e2e.md)); a text pasted into his
+page as it is reads a little differently, as the two read text differently. A layout with a letter,
+a Repeat key or a layer on a thumb differs a little more. The Layouts Doc rules leave the characters a layout cannot type out of
+the keystrokes, where he counts them, so they read a little higher on a layout that lacks some. A thumb press costs 1 here, where cyanophage charges nothing: a
+one-shot tap, a thumb held for a layer and a letter on a thumb are presses too. A space counts as
+a keystroke that costs nothing.
+
+**SFB**, same finger bigrams, counts the consecutive key pairs that one finger presses on two
+different keys, as a share of the letters typed (the cyanophage-like rules divide by keystrokes
+instead). It is the first measure of the
+[Keyboard Layouts Doc](https://docs.google.com/document/d/1W0jhfqJI2ueJ2FNseR4YAFpNfsUM-_FlREHbpNGmC2o),
+§4.1. Pressing the same key twice is a repeat, not an SFB.
+
+### Sorting and comparing
+
+**Library**, where the site opens, sorts every layout by Effort, by SFB, by name or by home row,
+and shows both numbers on each card with their badges, all scored on the same sample of the same
+text. By home row, layouts go in the alphabetical order of the letters their base layer types on the
+home row, left to right: Qwerty as \`asdfghjkl\`, a home row mod as the letter it taps, and a key that
+types no letter left out. **Rank and filter**, the gear (⚙︎) beside **Sort by**, holds
+what the ranking is made with, and **Boards**, which lists only the layouts on the boards you tick, so you can keep to the keyboards you own; the layouts on the others are not scored at
+all. Your custom layouts, the ones you keep, are
+ranked in the same list as the ones that come with the app, marked *custom*; untick **Custom
+layouts**, in **Rank and filter**, to leave them out. Community layouts, ones other people made and
+the Library accepted, are ranked there too, marked *community*, each in the category its keys give
+it; untick **Community layouts** to leave them out. They are read from GitHub each time the Library
+opens, with no sign-in, and kept in this browser, so the ones read last are listed at once, and
+still there offline. A link names one as \`community:\` and its id, and opens it in **Analyze** or
+**Compare** for anyone. When those, the categories, the languages or the boards leave
+some layouts out, a line under **Sort by** says how many are listed and why; when they leave none,
+the list says so instead of standing empty. Each layout takes its
+place as its score arrives. This browser remembers the scores, the sort and what you chose to list, so the next
+visit opens already ranked; the scores are checked again quietly, and a layout moves only if its
+numbers changed. **Compare** puts every number for two layouts side by side, with the difference and which
+of the two does better. Each layout's board has its own layer navigator, to look through every layer of
+both. At the right of it, the **Combos** button shows the
+[combos the board does not draw](#combos).
+
+**Heatmaps**, the button beside **Sort by**, colours the keys of every card's board by [heat](#heat),
+as Analyze does. It is off until you press it, and this browser remembers whether it is on. While
+it is, **Heat** beside it chooses what the colour measures, the same five choices as in Analyze, and a
+line under the scores says what the colours mean. A card's colours come from this visit's analysis of
+the layout, the one that checks its numbers, so they are what **Analyze** shows for that layout on the
+same text and rules. They appear card by card as each layout is scored, so after a reload the scores
+are there at once, from the last visit, and the colours follow. A card shows the heat of the layer
+its navigator is on, coloured against the busiest key of all the layout's layers, as in Analyze, so
+turning through the layers compares them; a key's tooltip gives its percentage of that key. A layer
+with nothing to show for the measure stays plain, and says so under the board.
+
+Each card also names the layout's [category](#categories), a link to how it is worked out, so you
+can keep the list to the ones you want: untick a category under **Categories**, in **Rank and
+filter**, to leave its layouts out of the list and the ranking. The order is the sort's alone,
+whatever the category.
+
+Layouts are compared on the text, not on their presses. The pair rules are a share of the letter
+pairs the text has, SFB of the letters it has, and Effort is per character typed, so a layout's layer taps, holds
+and one-shots, which can never be a same-finger letter pair, do not make it look better than it
+types: each adds its cost to Effort but no keystroke. A layout typing each character with one press
+gets the same numbers either way. A thumb press is never part of a roll or an alternation either,
+so a tap between two letters does not pass for a good trigram.
+
+A layout that has no key for letters the text's language needs skips them, and skipping is free, so
+its numbers flatter it. Each card says what share of the text it skips, and which letters, but the
+list stays in one order, by the sort alone: neither a layout that skips them nor its type or category
+is set apart, so on a Portuguese text, say, a layout without \`ã\` or \`ç\` sits where its Effort or SFB
+puts it, with its note. A layout that comes with the app types what its author's design types, so on
+a Portuguese text most of them lack letters and say so on their cards; Romak, Magic Romak, the three
+Hands Down and T-34 type them, and a layout of your own can start with an
+[Accents](editing.md#default-layers) layer. A layout is also held to the languages it is for, chosen in **Settings** in **Analyze**: one
+for Spanish that has no \`ñ\` says so on its card, whatever the text, though on an English text it
+skipped nothing for Spanish. A layout that comes with the app is for the languages its author
+states: English and Portuguese for Romak and Magic Romak, and English for the rest, including
+those whose author names no language, Qwerty among them.
+
+**Measure languages**, beside them in **Settings**, adds the languages a layout performs well in.
+A layout performs well in a language when it types every letter the language needs and its Effort
+on the language's news text is in the better half of the bundled layouts': fewer than half of them
+beat it. The text is the one the Library ranks on, the language's Leipzig news corpus on the
+[Layouts Doc rules](#the-layouts-doc-rule-set), letters only, 100,000 symbols. The button analyzes
+the layout in hand once for each language it types and is not for yet, and counts the Efforts
+stored with the app for the bundled layouts that are lower than its own. It says which languages it
+added, and why not the others: the letters it lacks, or the Effort and how many bundled layouts beat
+it. The languages are added as one edit, which **Undo** takes back, to a layout of your own and to a
+copy of a bundled one alike. It never takes a language away.
+
+**Languages**, in **Rank and filter**, lists only the layouts for the languages you tick: a layout
+stays listed while one of the languages it is for is ticked, so Magic Romak, for English and
+Portuguese, is listed with Portuguese alone. It goes by the languages a layout is for, not by those
+it can type. Each box says how many layouts are for its language, a layout for two counted in both.
+In the Library, its filter, counts and cards, a layout that names no language is for English, and
+so, for the filter, is one that names only languages the app has no text for; such a language gets
+no chip on the card. A layout made with **New layout**, or imported from text or from a
+keymap-drawer file, starts as one for English; one pasted as JSON keeps the languages it names.
+Every layout that comes with the app names at least one. All are ticked at first; **All** ticks them all and **None** clears them, and
+unticking **None** ticks them all again. With none ticked the Library lists nothing and says so. The
+choice is kept in this browser, not in the link, as the categories and boards are.
+
+**Rank with** switches special features off for the ranking: adaptive keys (they type their default
+letter), the repeat key (doubled letters are tapped twice), typing combos, and macros that type two
+letters or more, such as \`qu\` or \`ão\`. A macro typing one letter, like Magic Romak's accents, is how
+the layout reaches that letter, and stays. What a feature typed is typed another way, or skipped if
+there is none. **Analyze** on a card opens the layout, ranked the same way, and says so.
+
+The same switches are in every view that analyzes, in its **Settings**. **Compare with**, in
+**Compare**, types both layouts without the features left unticked and draws their combos that way;
+their keys are drawn as written, as in **Analyze**. **Analyze A** and **Analyze B** open either one
+typed the same way. **Analyze with**, in **Analyze**, does it for the
+one layout, which is still edited as written: only its numbers leave the features out.
+
+### Categories
+
+A layout is in exactly one category, which follows from its own keys, whether it came with the app
+or is yours. The name on each card in the Library leads here. Three rules decide it, checked in
+this order, and the first that fits is the category:
+
+1. **Special**: a layout with an adaptive key, a macro, an alt repeat or a mod morph, on a key or on
+   a combo; or with more than one alpha layer; or on a board of fewer than 34 keys, thumbs included
+   (a row-stagger board's one space bar counts once). A sentence space, which changes with the key
+   before it as an adaptive key does, makes a layout Special too. So does a shift key that starts
+   caps word, which is a mod morph.
+2. **Thumb Alpha**: a layout that is not Special, but where a thumb key types a letter on an alpha
+   layer.
+3. **Standard**: a layout that is neither: no special feature, no letter on a thumb, at most one
+   alpha layer, and a board of 34 keys or more.
+
+An *alpha layer* is a layer where a key types a letter from a to z by itself: as a plain key, as the
+tap or the hold of a tap-hold, as a layer-tap's tap, on either side of a morph, in a tap dance, or
+as an adaptive key's default or one of its branches. The letters a macro types do not count. A
+layout that has an Accents layer has the [default layers](editing.md#default-layers), Numbers,
+Symbols and Accents, and nothing on them counts toward its category, nor does a combo that fires
+only on them. One without Accents has the layers its author defines, Numbers and Symbols among them,
+and they count.
+
+### Changing the costs
+
+The cost of each key is a parameter of the Effort rule, \`params.effort\`, changed in a rule set's
+**JSON** in **Rules**: **Export current**, edit the costs, then **Import (replace current)** and save
+the set. The change applies wherever that rule set is used. A thumb is a key like the others there:
+give it a cost by its key, \`L0\` or \`R1\`, and that replaces the 1 every thumb press costs.
+
+## How a text is typed
+
+LayerBench does not look letters up in a table. It works out the physical presses that produce
+each character on this keymap (the layer key first, the shift, the combo, the adaptive key) and
+measures those presses. A letter on a layer costs its layer key too, and a one-shot that is used up
+by the wrong key counts as wasted.
+
+When a character can be typed more than one way, it takes the fewest presses, then the way that
+leaves no layer key held, then the one that makes the fewest same-finger pairs with the keys before
+it in the word, then the one with less effort on cyanophage's grid, where a thumb is free, so what
+is typed never depends on what a thumb costs. Where the layout has a Repeat key, a letter typed
+again by tapping the same key again counts as three presses: one finger tapping a key twice is worse
+than two taps on two fingers, so the Repeat key is used for a doubled letter even where it takes two
+presses, a layer key and Repeat, as long as its layer is one key away: a Repeat behind a third layer
+is not used. Without one, or with doubled letters set to tap twice, nothing changes. When several keys reach a layer the same way, each
+word is typed with the one that makes it the fewest same-finger pairs, so the key tapped for a
+layer can change from word to word, as **How is this typed?** shows.
+
+A macro or any key that types several characters at once is pressed wherever the text has them all,
+before typing them one at a time is tried. One that types a mark and then a space, such as \`, \` or
+\`. \`, types the word's space with its mark, when that takes no more presses than the mark and then
+the space bar: it is one press, the word's last, counted as the mark's key would be, with **Space**
+on or off, and named with the space as the board draws it: \`,␣\`. Its space ends the word, so the
+next letter starts one, and the words are counted as with the space bar; with **Space** on it pairs
+with the next word's first letter too, as the space bar does. Where no space follows the mark, the
+key's other ways type it, such as a hold that types the mark alone. A macro is matched only where its
+space is the last thing it types, after marks alone: one that types a word and its space, \`and \`,
+is not pressed, and the word is typed letter by letter.
+
+Type a word into **How is this typed?** and the board plays it: each press lights up in turn, on
+the layer it lands on, and a thumb held for a layer stays marked while it is held. The ring on a
+layer's reach keys, the keys held or tapped to get to it, stays all along. The presses are
+listed under the field; tap one to stop on it, and **Play** to start again. Characters the layout
+cannot type at all wait in the [missing-keys tray](editing.md#missing-keys) under the board, with
+how often the text has them. Each one breaks the word it is in, so the more of the text's
+characters wait there, the more the numbers understate the cost.
+
+### Heat
+
+**Heat** colours each key by its part of the work: how often it is pressed (**Usage**), its part of
+the same-finger pairs (**SFB contribution**), of **Effort** or of **Finger travel**, or how often it
+is tapped to reach a layer (**Layer taps**). A key's part is the same number [its own
+numbers](#a-keys-numbers) give: a pair counts half on each of its keys, Effort is a key's cost times
+its presses, so the free home-row keys and the space bar stay cold, and travel counts on the key a
+finger moved to. Each layer counts only what was pressed on it, on the key that typed it. The thumb
+tapped for Alpha 2 is warm on the layer it is tapped on, not on Alpha 2. A key that lets the layer
+below show through is warm on that layer, where the key that types is drawn. A rule set without the
+rule a choice is made of draws **Usage** instead, in the Library as here.
+
+Whatever the heat measures, a key's tooltip on Analyze's board also gives its share of the
+presses, \`12.34% of presses\`, and a screen reader reads it with the key's name. It is the share
+[its numbers](#a-keys-numbers) open with, written the same way: the key's presses on the layer
+shown out of all the presses counted, on every layer, with two decimals, \`under 0.01%\` for a key
+pressed rarely and \`0%\` for one the text never presses. A layer's keys add up to that layer's
+share and the keys of every layer to 100%, less the presses of combos, which are the combo's and
+not any one key's: a key pressed only in combos reads \`0%\`, and its numbers count them apart. The
+tooltip gives this share alone: what the heat measures is the colour's, and each part of it is in
+the key's numbers.
+
+A press counts on the layer whose key was pressed, so a key that holds or taps for a layer is
+counted on the layer it is pressed on; on the layer it leads to it is usually transparent, and a
+transparent key, like one with nothing on it, says nothing. By default the space key is not counted
+([Case and space](#case-and-space)), so a key that types a space says \`space not counted (Space is
+off)\` in place of a share, and has one like any other key once **Space** keeps it in. While the
+layout or the settings are no longer those the numbers were made on, until the new analysis lands,
+each share says \`(updating)\`, as the key's numbers do. A touch screen has no tooltip: tap the key,
+and its numbers say the same share. The Library's cards give the percentage of the busiest key
+instead, as above.
+
+One scale colours every layer: the busiest key of all of them is the hottest colour, and every other
+key, on whichever layer, is coloured by its share of that. A key with the same share has the same
+colour on every layer, so the layers can be compared at a glance: a layer of rarely pressed keys, such
+as Numbers or Accents, stays pale beside the base layer, where scaled on its own it would have looked
+as busy. The Library's cards have heat too, under [Heatmaps](#sorting-and-comparing), where a key's
+tooltip gives the percentage the colour stands for.
+
+With heat on, the percentage at the left of the layer's name, **of presses**, is the share of the
+typing done on that layer: the key presses made on its keys, out of all the key presses counted, the
+space key's left out unless **Space** keeps it in ([Case and space](#case-and-space)). It is the
+same in every heat mode, and the layers' shares add up to 100%, give or take the rounding to a tenth.
+A layer the text never reaches reads 0%, and one it reaches too rarely to show a tenth reads
+**under 0.1%**; by default **Counts** counts letters only, so a layer of digits or symbols reads
+little or nothing there. It is on every board that draws heat: Analyze's, and the Library's cards
+under Heatmaps; Compare draws none. While Analyze is **updating…** after an edit, the numbers on show
+are those of the layout before it, so no share is written until the new ones land.
+
+### Combos
+
+Combos marked for typing are drawn on the layers where they work, as
+[Keymap Drawer](https://github.com/caksoylar/keymap-drawer) draws them. One on two keys side by
+side, one above the other, or diagonal, is a small box on the gap between them. It shows what it
+types, and what it does held under that.
+
+Combos on three or more keys, or on keys apart, are not drawn on the board; nor is one whose box
+has no room on its gap. The **Combos** button, at the right of the layer navigator, opens them for
+the layer shown. Each is drawn once, on a small board of its own with its keys filled, as Keymap Drawer
+draws a combo apart. Under it are the layers it works on. Pick one to open it in the combo editor.
+
+The boards of the Library's cards, of **Compare** and of the import preview are drawn as Analyze
+draws its board, with the same **Combos** button. They have no heat, except the Library's, where
+[**Heatmaps**](#sorting-and-comparing) turns it on, and nothing on them is edited: the button only
+shows the combos. A Library card does not list what its numbered keys do; open the
+layout in **Analyze** for that.
+
+In **Analyze**, a box lights up with its keys when a word uses it; for a combo off the board, the
+button lights up. Pointing at a box, or focusing it, outlines its keys. **Combos**, under *On the
+board* in **Settings**, hides them, and the button; a combo being played still lights its box, if
+it has one.
+
+### Case and space
+
+By default capitals count as lower case and the space key is left out of the counts, as the
+Keyboard Layouts Doc does. **Shift** types capitals with Shift instead, each through the cheapest
+key that gives it, the shift key, a one-shot or a held Shift, a home row mod among them, the Shift
+press weighed as part of the word; where the layout has no key that gives Shift, no capital at all; and **Space** keeps the space key in. Both are among the feature switches, in **Settings**. **Counts**
+says what of the text is counted: letters only, the default, or numbers and symbols as well. The
+symbols are those a symbol layer carries and those the bundled texts use. Curly quotes, German's
+\`„ ‚\` among them, dashes and the ellipsis count as their plain forms, and a language's own
+punctuation, Spanish \`¿ ¡\` say, is kept in any count.
+
+With **Space** on, a layout whose Repeat key and space bar are on one thumb lists a pair named
+\`⟳␣\` among its SFB: a doubled letter typed by the Repeat key, then the space, is one thumb on two
+keys, and the thumbs count. A press of the Repeat key is named \`⟳\`, as the board draws it, not by
+the letter it repeated; an adaptive key's other branches, Magic Romak's \`h\` after \`a\`, keep the
+letter they typed. Point at the row to see the keys in its tooltip: *L1 (Repeat) → L0 (space /
+Numb) · same finger, LT*. A key's numbers name them the same way when a row is pointed at.
+
+### The text itself
+
+**Corpus** lists the texts that come with the app, each with where it came from, and opens on
+English. Six are news, in English, Portuguese, Spanish, French, Italian and German. Three are what
+news hardly has: **Code — C family**, lines of C, C++, C#, Java, JavaScript and TypeScript, Go,
+Rust, PHP, Kotlin and Swift, **Code — Python family**, lines of Python, with a few in Nim and
+GDScript, and **Markdown — AI agents**, English as it is typed to work with an AI agent:
+instructions, rules, prompts and docs. Every list of texts is in the same order: the English texts
+first, then the rest by name.
+
+These three are made of symbols, so set **Counts** to *Letters, numbers and symbols* to read them
+as they are typed: with letters only, they are read as identifiers and words alone. The code is
+what open-source projects wrote, under their own licences, with its comments taken out, where the
+names and addresses of a project are; a line break and the indentation after it count as one
+space, since the analysis does not press Enter or Tab. Which projects, and what was left out, is in
+[CODE-SOURCES.md](../../packages/corpora/raw/CODE-SOURCES.md), and
+[the research note](../research/code-corpora.md) says how the texts were chosen.
+
+Your own text can be pasted or uploaded there and analyzed like any other, and **Save to library**
+keeps it:
+custom texts are listed in **Corpus** and offered in every view that analyzes, under **Custom**,
+after the ones that come with the app. A text published under an open licence can join the ones
+that come with the app, by pull request on GitHub; the
+[README](../../README.md#bundled-corpora) lists the steps. **Sample**, on **Analyze**
+and **Compare**, sets how much of the text is typed, 100,000 symbols unless you choose more: more
+gives steadier numbers, less gives them sooner, which matters most while a layout is being edited,
+since every edit types it again. **Library** ranks on at most 100,000 symbols, since it types the
+text once for every layout, and says so above the list; a layout opened from it keeps that sample in
+**Analyze**, so its numbers there are the ones its card showed. **Mix with** blends a second text
+into the first, in the share you choose: **Analyze** analyzes on the mix, **Compare** compares on it
+and **Library** ranks on it.
+
+### The same choices in every view
+
+**Library**, **Analyze** and **Compare** share their choices: the corpus and a text mixed into it,
+the rules, what counts, the feature switches, space and shift. Change one in any of them and the menu carries
+it to the others, and so do **Rules** and **Corpus** when they open **Analyze** with a set or a
+text. A link still opens exactly what it names, and a new visit starts from its link.
+
+## A key's numbers
+
+Select a key and a section of its own opens right above the **Summary**, **Its numbers on** the
+layer shown: what the key adds to the analysis there:
+
+- its share of the presses, the one its tooltip on the board gives (see [Heat](#heat)), and how many
+  were made to reach a layer;
+- its part of each number that adds up over keys, with that number and the share it makes of it.
+  A pair counts half on each of its keys, a combo's share is split between the keys pressed
+  together, Effort is the key's cost times its presses and Finger travel the distance its finger
+  moved to press it, so the parts of every key add up to the number. The headline numbers come
+  first; **Every number** shows the rest. Balances, ratios and word lists have no part per key;
+- tap a number to list the pairs and trigrams it counts with the key in them, and tap one of those
+  to outline it on the board;
+- for a key that reaches a layer, what it was **pressed for**: the keys pressed right after it,
+  each with its share, and on the board of the layer it reaches.
+
+The parts follow an edit at once, an estimate after a swap included; the lists come a moment later.
+
+## Every other number
+
+Below the summary, the numbers are grouped by what they count:
+
+| Group | What it counts |
+|---|---|
+| Bigrams | two presses in a row: same finger, scissors, lateral stretches |
+| Skipgrams | two presses with one or more between them |
+| Trigrams | three presses: alternation, rolls, redirects |
+| Usage | how the work is shared between fingers, hands, rows and columns |
+| Effort | Effort, and the words that take the most of it |
+| Layers | layer taps, one-shots, macros, combos and adaptive keys: what layers cost |
+
+The **Show** checkboxes above the groups hide the ones you do not need, and **All** shows or hides
+every one at once. The choice holds in **Analyze** and **Compare** alike, and this browser remembers
+it.
+
+A card's breakdown lists the key pairs or words behind its number. Selecting one outlines its keys
+on the board, with a green arrow from each key to the next, and turns the board to the layer they
+are pressed on: \`→A2ã\`, the thumb for Alpha 2
+and then \`ã\`, shows Alpha 2. A layer key is named as on the board, \`→A2\` for the key tapped for
+Alpha 2 and \`⇩Symb\` for one held for Symbols. A pair that ends on one, such as \`a→A2\`, is
+underlined with dots, and selecting it also opens what that key was pressed for: the board of the
+layer it reaches, each key warm by its part of the pair, and the same as a list. Click a card
+anywhere else, or its \`⤢\`, to see it larger. The [metric glossary](../METRICS.md) defines every
+number.
+
+### What the badges mean
+
+A rule's **ruler** turns its number into a badge: a list of upper bounds, and the name of each step.
+A number falls in the first step whose bound it does not exceed, and above the last bound in the
+step after it. The steps are named *min*, *very low*, *low*, *mid low*, *mid*, *mid high*, *high*,
+*very high* and *max*, as many as the ruler has, and the Keyboard Layouts Doc sets their bounds for
+the metrics it covers; LayerBench adds its own for Effort, lateral stretches, layer taps, wasted
+one-shots and extra keys. The colour is the step's place on the ruler, not a judgement of the value:
+with nine steps the first three are green, the next three amber and the last three red, where lower
+is better (alternation, rolls and the in:out roll ratio are the other way round). The
+[glossary](../METRICS.md#bands) lists every band.
+
+The ruler is part of the rule set. Every rule carries its own, so two sets can rate the same number
+differently, and a custom set keeps the rulers it was saved with and edits them in **Rules**. Click
+the badge of **Effort** or **SFB**, on a Library card, in the summary, on its card or in Compare, and
+[the rulers](#the-rulers) open at the one for the rule set the number was rated on.
+
+## The rulers
+
+Effort and SFB are the two numbers a layout is ranked by, and the two whose badge leads here. Each
+rule set draws them as follows.
+
+### The Layouts Doc rule set
+
+**SFB.** The Doc's table gives SFB six bounds, *min* to *mid high*, and a dash under *high*, *very
+high* and *max*; none of its layout tables has an SFB past 1.242 (Engram's). The first five bounds are
+the Doc's. For what the dashes leave open LayerBench carries the Doc's sequence on, whose steps grow
+0.10, 0.11, 0.14, 0.20, 0.30, and then 0.45, 0.66 and 0.94, and each number begins the name it is
+given: *high* above 1.825, *very high* above 2.485, *max* above 3.425. *Mid high* therefore runs to
+1.825, past the 1.375 where the Doc ends it, and every SFB in the Doc's own tables keeps its
+category.
+
+| Step | SFB up to | Colour |
+|---|---|---|
+| min | 0.525 | green |
+| very low | 0.625 | green |
+| low | 0.735 | green |
+| mid low | 0.875 | amber |
+| mid | 1.075 | amber |
+| mid high | 1.825 | amber |
+| high | 2.485 | red |
+| very high | 3.425 | red |
+| max | above 3.425 | red |
+
+Colemak-DH reads 1.133 on the English sample, which cannot type the apostrophe its author puts past
+the 34 keys, where the Doc has 1.177: *mid high*. Dvorak, about 2.2, is *high*, and Qwerty, about
+5.4, *max*.
+
+The Doc's bounds came from numbers counted without the space bar and with capitals folded, as a share
+of the letters typed, and these rules count SFB the same way, so with **Space** and **Shift** off the
+badge is the Doc's band for the Doc's number. Turn them on and the SFB includes pairs the Doc never
+had, such as Repeat then space on one thumb or the Shift presses, so its band can differ from the
+Doc's for the same layout, though it is still a share of the letters. SFS, scissors, redirects and
+pinky off keep the next name after their last threshold, as the Doc's own layout tables name those
+values. SFS is not counted as the Doc's: it is a share of the text's skipgrams, over one skipped key,
+where Genkey divides by the letters and counts skips of up to nine keys, each half as much as the one
+before. The glossary has the figures.
+
+**Effort.** LayerBench's own, on the same nine steps: *min* up to 400 and *max* above 900, and
+between them the progression of the Doc's SFB bounds (0.525, 0.625, 0.735, 0.875, 1.075, 1.375,
+1.825, 2.485, whose steps of 0.10, 0.11, 0.14, 0.20, 0.30, 0.45 and 0.66 each grow, by a tenth at
+first and by about half from the fourth) at the same relative places, so the steps are 26, 28, 35,
+51, 77, 115 and 168 points, rounded to whole numbers: narrow where the layouts cluster, wide where
+only the worst are. The SFB ruler above leaves 1.375 out, its *mid high* running to 1.825, and
+Effort's keeps it, so the two are not step for step the same. On the English news
+sample, 100,000 symbols, the layouts that come with the app run from Magic Romak's 353 to Qwerty's
+1245: Romak, at 456, is *mid low*, Colemak-DH, at 523, *mid*, Colemak, at 629, *high*, Dvorak, at
+764, *very high*, and only Qwerty is *max*. Another text or sample moves them a little.
+
+| Step | Effort up to | Colour |
+|---|---|---|
+| min | 400 | green |
+| very low | 426 | green |
+| low | 454 | green |
+| mid low | 489 | amber |
+| mid | 540 | amber |
+| mid high | 617 | amber |
+| high | 732 | red |
+| very high | 900 | red |
+| max | above 900 | red |
+
+### The cyanophage-like rule set
+
+Cyanophage rates nothing: his playground prints SFB (Qwerty 4.38% on his own word list) and Effort
+(1258.15) as plain numbers, with no bands or categories. The one ramp it draws for same-finger bigrams is a finger's bar
+in the finger view of the SFB panel, from grey to a pale red that stops getting redder at 2.117% of
+the text (\`red = 128 + 6000 × share\`, clamped to 255). The same constant colours his per-finger
+skipgram bars, so it is a general ramp and not one he set for SFB, but it is the nearest thing to a
+reference there is, and this set's SFB ruler is drawn on it: nine equal steps from nothing to where
+it stops, 0.235 apiece, the ninth, *max*, from 1.881 on. It is one finger's share that his ramp
+colours and this reads it as a layout's total, which is LayerBench's assumption and not his.
+
+| Step | SFB up to | Colour |
+|---|---|---|
+| min | 0.235 | green |
+| very low | 0.47 | green |
+| low | 0.706 | green |
+| mid low | 0.941 | amber |
+| mid | 1.176 | amber |
+| mid high | 1.411 | amber |
+| high | 1.646 | red |
+| very high | 1.881 | red |
+| max | above 1.881 | red |
+
+These rules divide by keystrokes, with a space per word, and count the characters a layout cannot
+type as keystrokes too, as he does (on the English sample, \`'\` and \`-\` are some 0.6% of the
+characters, which a 30-key layout without those keys does not type), so the same layout reads lower than under the Layouts Doc's:
+Colemak is 0.93 on the English sample, *mid low*, Dvorak 1.81, *very high*, and Qwerty 4.45, *max*.
+Given the text as LayerBench types it, ten layouts whose thumb only shifts read here what his
+playground prints, to his two decimals: SFB, its two-row part, lateral stretches, skipgrams,
+scissors, weak redirects and Effort (see [the cyanophage check](../research/cyanophage-e2e.md)).
+How far that holds for other texts and layouts is in that note.
+
+**Effort** is the same rule in both sets, and he has no ruler for it, so this set uses the Layouts
+Doc set's above, step for step and colour for colour. Its number is a little lower here where the
+text has characters the layout cannot type, as they count among the keystrokes it is divided by.
+
+### Custom rule sets
+
+A custom rule set carries the rulers it was saved with, and its badge for Effort or SFB leads to
+[The rulers](#the-rulers). The bounds belong to the set, so one saved with other bounds keeps
+them, and its badges name bands by them, until they are changed in **Rules**, under **Bands (upper
+bounds)**. A set made from one of the presets above starts with that preset's rulers.
+
+Hand balance is read as the Doc reads it, from the share of the keystrokes each hand types. The Doc
+prints whole percents and files a split under the one it prints: *even* up to a 52-48 split, *leans*
+up to 55-45 and *heavy* past that, so 52.4-47.6 is still *even* and 55.6-44.4 is *heavy*. The shares
+are not rounded here, the bands end at 5 points of difference, a 52.5-47.5 split, and at 11, a
+55.5-44.5 one. The card shows that difference (**Hand Δ** in the summary strip) and the two shares.
+The Doc names no category past *heavy*, so a 70-30 split is still *heavy*. Like the other numbers,
+it counts what the **Space** setting counts: with Space on, the thumb that types it adds its presses
+to its hand, and a layout can change band. [The research note](../research/hand-balance-bands.md)
+has the Doc's rows.
+
+## Rules and their sources
+
+Every number is a rule: plain data that says which key sequences count, and how. **Rules** lists
+them. Each can be turned off, given other bands and a score weight, or removed, and new ones can
+be composed; anything else, such as a key's cost, is changed in the set's **JSON**. Whether the space
+key counts is not the set's to say: **Space**, where layouts are analyzed, decides it. A custom rule set is
+saved like a layout, and offered by its name beside the presets wherever layouts are analyzed, but
+its link only names it, so it opens only where it is saved; anywhere else the page says so, and
+nothing is measured with other rules in its place.
+
+Every built-in rule names where its definition comes from: a section of the Keyboard Layouts Doc,
+a line of another analyzer's code, or the glossary where the rule is LayerBench's own. Open
+**Sources** under a rule in **Rules**, or on its card in **Analyze**.
+
+### Presets
+
+A preset is a rule set that follows another analyzer's definitions: *Layouts Doc* (the default),
+and *cyanophage-like*. The [glossary](../METRICS.md#presets) says what each one
+changes.
+
+### Writing a rule
+
+The **Composer**, near the bottom of **Rules**, above **JSON**, builds a rule from conditions on a sequence of
+presses (same finger, rows apart, a thumb among them) and a way to count them. The whole vocabulary
+is in the [glossary](../METRICS.md#rule-vocabulary).
+`;export{e as default};
