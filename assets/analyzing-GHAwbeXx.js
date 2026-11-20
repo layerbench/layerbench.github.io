@@ -3,9 +3,12 @@ var e=`# Analyzing a layout
 **Analyze** types a sample of text on the layout, key by key, and shows what that took: a heat map
 of the keys, the numbers under it, and how any word you give it is typed.
 
-Each group of the page, **Board**, **A word, typed**, **Summary**, **Legend**, **Editor** and
-**Numbers**, folds away under its heading, and so do **Layouts** and **Metric comparison** in
-**Compare**. This browser remembers which you folded.
+Each group of the page, **Board**, **A word, typed**, **Summary**, **Legend** and **Numbers**, folds
+away under its heading, and so do **Layouts**, **Metric comparison** and, under each layout's board,
+**Legend** and **Summary** in **Compare**, where folding one layout's folds the other's, as the two
+are read against each other. **Legend** starts folded, in both, and opens under its heading. This
+browser remembers which you folded and which you opened. In **Analyze** the **Legend** and the
+**Summary** are in the board's card, as in each layout's card in **Compare**.
 
 Two numbers lead: **Effort**, an estimate of how hard the keys are to reach, and **SFB**, how often
 one finger presses two keys in a row. Lower is better for both. Both, and some other numbers, also
@@ -51,16 +54,19 @@ row, layouts go in the alphabetical order of the letters their base layer types 
 left to right: Qwerty as \`asdfghjkl\`, a home row mod as the letter it taps, and a key that
 types no letter left out. **Rank and filter**, the gear (⚙︎) beside **Sort by**, holds
 what the ranking is made with, and **Boards**, which lists only the layouts on the boards you tick, so you can keep to the keyboards you own; the layouts on the others are not scored at
-all. Your custom layouts, the ones you keep, are
-ranked in the same list as the ones that come with the app, marked *custom*; untick **Custom
-layouts**, in **Rank and filter**, to leave them out. Community layouts, ones other people made and
+all. Your custom layouts, the ones you keep, are marked *custom* and ranked in the same list as
+the bundled layouts, the ones that come with the app; untick **Custom layouts**, in **Rank and
+filter**, to leave them out, or **Bundled layouts** to leave out the bundled ones. Community
+layouts, ones other people made and
 the Library accepted, are ranked there too, marked *community*, each in the category its keys give
 it; untick **Community layouts** to leave them out. They are read from GitHub each time the Library
 opens, with no sign-in, and kept in this browser, so the ones read last are listed at once, and
 still there offline. A link names one as \`community:\` and its id, and opens it in **Analyze** or
-**Compare** for anyone. When those, the categories, the languages or the boards leave
-some layouts out, a line under **Sort by** says how many are listed and why; when they leave none,
-the list says so instead of standing empty. Each layout takes its
+**Compare** for anyone. Bundled, custom and community layouts each have a switch of their own, so
+to list only your own, untick **Bundled layouts** and **Community layouts**. When those switches,
+the categories, the languages or the boards leave some layouts out, a line under **Sort by** says
+how many are listed and why; when they leave no layout in the list, the list says so instead of
+standing empty. Each layout takes its
 place as its score arrives. This browser remembers the scores, the sort and what you chose to list, so the next
 visit opens already ranked; the scores are checked again quietly, and a layout moves only if its
 numbers changed. **Compare** puts every number for two layouts side by side, with the difference and which
