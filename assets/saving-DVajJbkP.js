@@ -422,8 +422,9 @@ the way.
 ## Sharing an image
 
 A link opens LayerBench; where a link will not do, such as a post on Reddit or a message in Discord,
-**Export image** makes a picture instead. It is in **Analyze**, beside **Heat** under the board, and
-in **Compare**, beside **Heat** above the two boards. It is off until the numbers the colours are
+the **Export** button makes a picture instead (its dialog is **Export image**, and the editor's
+**Export** tab, which exports the layout as text, is another thing). The button is in **Analyze**,
+beside **Heat** under the board, and in **Compare**, beside **Heat** above the two boards. It is off until the numbers the colours are
 made from are of the layout in hand: while **Analyze** is still working out an edit, and until both
 layouts of **Compare** are scored, its title says which.
 
@@ -433,7 +434,10 @@ layer, **All layers**, in the dialog, draws every layer instead, one under anoth
 its place and name and the share of the typing it does, with the Summary once, after the last (a
 card holds the first 32 layers, which is as many as ZMK has, and says how many it left out). The
 file is then named \`layerbench-<layout>-all-layers.png\`. Under **Compare** the two layouts
-are one over the other, on the one scale both boards are coloured on. It also holds:
+are one over the other, on the one scale both boards are coloured on, but with **All layers** they
+are **side by side** instead: a wider image, a column for each layout, each board as large as it
+is alone and the same layer of each beside the other, so that every layer of two layouts is a
+picture about as high as one layout's. It also holds:
 
 - **Credits.** The layout's name, \`by\` its author, and the address of its link, as **Settings** in
   **Analyze** gives them. A layout that names no author has no line for one.
